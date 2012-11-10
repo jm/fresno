@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'fresno'
-  s.version           = '0.0.2'
+  s.version           = '0.0.3'
   s.date              = '2012-11-10'
   s.rubyforge_project = 'fresno'
 
@@ -59,7 +59,26 @@ Gem::Specification.new do |s|
   ## THE MANIFEST COMMENTS, they are used as delimiters by the task.
   # = MANIFEST =
   s.files = %w[
-
+    Gemfile
+    LICENSE
+    README.md
+    Rakefile
+    bin/fresno
+    fresno.gemspec
+    lib/fresno.rb
+    lib/fresno/app_generator.rb
+    lib/fresno/generator_data/BSD_FOR_WPILIB
+    lib/fresno/generator_data/MITLICENSE
+    lib/fresno/generator_data/README.md.template
+    lib/fresno/generator_data/build.properties.template
+    lib/fresno/generator_data/build.xml.template
+    lib/fresno/generator_data/command.mirah.template
+    lib/fresno/generator_data/gitignore.template
+    lib/fresno/generator_data/iterative.mirah.template
+    lib/fresno/generator_data/netbeans.template
+    lib/fresno/generator_data/simple.mirah.template
+    src/extensions/fields.mirah
+    src/fresno.mirah
   ]
   # = MANIFEST =
 
