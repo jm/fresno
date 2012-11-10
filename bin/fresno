@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'thor'
+
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'fresno'
+
+class FresnoCommand < Thor
+
+  #####################
+  # create - Create a new project directory and populate it with some basics
+  #
+
+  desc "create [ProjectName]", "Generates a new Fresno project"
+
+  # Project templates
+  method_options :netbeans => false, :desc => "Include NetBeans project"
+  # TODO: Locate workable copy of Eclipse project...
+  # method_options :eclipse => false, :desc => "Include Eclipse project"
+
+  # Project skeletons
+  method_options :iterative => true, :desc => "Create a basic iterative robot project"
+  # TODO: Port and re-organize command driven code
+  # method_options :command => false, :desc => "Create a command driven robot project"
+  method_options :simple => false, :desc => "Create a 'simple' robot project"
+
+  def create(project_name)
+    Fresno::AppGenerator.new(@args, @options, @config).generate(project_name)
+  end
+
+  #
+  #####################
+
+  #####################
+  # version - Give us a good bit of version info so we can debug easier
+  #
+
+  desc "version", "Shows the current version of Fresno"
+  def version
+    puts "Fresno v.#{Fresno::VERSION} running on #{RUBY_ENGINE rescue 'MRI'} #{JRUBY_VERSION rescue RUBY_VERSION} (#{RUBY_PLATFORM})"
+  end
+  
+  #
+  #####################
+end
+
+FresnoCommand.start

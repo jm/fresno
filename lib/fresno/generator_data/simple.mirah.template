@@ -1,0 +1,23 @@
+#
+# <%= @name.capitalize %>Robot
+# Simple robot class
+#
+# Based on SimpleRobotTemplate that is
+# Copyright (c) FIRST 2008. All Rights Reserved.
+# 
+package org.fresnoframework.<%= @name.downcase %>
+
+import edu.wpi.first.wpilibj.SimpleRobot
+
+class <%= @name.capitalize %>Robot < SimpleRobot
+  # Called when the robot enters autonomous controller
+  def autonomous:void
+
+  end
+
+  # Called when the robot enters operator control
+  def operatorControl:void
+
+  end
+end
+

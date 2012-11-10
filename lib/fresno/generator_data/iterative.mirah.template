@@ -1,0 +1,25 @@
+#
+# <%= @name.capitalize %>Robot
+# Iterative robot class
+#
+# Based on IterativeRobotTemplate that is
+# Copyright (c) FIRST 2008. All Rights Reserved.
+# 
+package org.fresnoframework.<%= @name.downcase %>
+
+import edu.wpi.first.wpilibj.IterativeRobot
+
+class <%= @name.capitalize %>Robot < IterativeRobot
+  def robotInit:void
+  end
+
+  # Called periodically during autonomous control
+  def autonomousPeriodic:void
+
+  end
+
+  # Called periodically during operator control
+  def teleopPeriodic:void
+  
+  end
+end

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+
+  Some useful command line properties:
+              
+    -Dbasestation.addr=1234   set the address of the basestation
+    -DremoteId=1234           set the target for remote run/deploy/debug-proxy-run
+    -Dsquawk.startup.class=com.example.MyStartUp
+                              set an alternative startup class name
+    -Dspotport=COM2           set the port name for communicating with the SPOT
+    -Djar.file=example.jar    set the jar file for jar-app, jar-deploy and make-host-jar
+    -Dmidlet=2                select a midlet to run for selectapplication
+                              or deploy targets (defaults to 1)
+    -Dutility.jars=utils.jar  a classpath separator delimited list of jars to be 
+                              included with the application
+
+-->
+
+<project basedir="." default="help" name="<%= @name.capitalize %>Project">
+    <!-- 
+    
+    If you want to change your source directory, uncomment the
+    following:
+    
+    <property name="src.dir" value="mysrc"/> 
+    
+    -->
+
+    <property name="user.properties.file" value="build.properties"/>
+    <property file="${user.home}/.sunspotfrc.properties"/>
+
+    <!--
+
+    This setup requires the master Sun SPOT build file, but if you
+    don't have the property file set for some reason, you can use
+    the following property to specify it explicitly:
+
+    <property name="sunspot.home" value="/opt/sunspot"/>
+    
+    -->
+
+    <import file="${sunspot.home}/build.xml"/>
+
+    <!--
+
+    This file imports the master build file for compiling and deploying sunspot
+    applications.  This file provides hooks for the user build file, so that
+    you can accomplish almost anything without having to rewrite any of the
+    build procedures.  However, if need be, you can just look at the imported
+    build file to determine how exactly any step is accomplished.
+
+    There exist several targets which are by default empty and which can be 
+    used for execution of your tasks. These targets are usually executed 
+    before and after some main targets. They are defined as follows:
+
+    For each target above (except help),
+
+        -pre-<target>:  called before the target
+        -post-<target>: called after the target
+
+    For example, inserting an echo statement after compilation could look like this:
+
+        <target name="-post-compile">
+            <echo>Compile finished!</echo>
+        </target>    
+
+    For more information on using ant, see http://ant.apache.org.
+
+    -->
+
+    <!--
+
+    Compile the Mirah files down to Java.
+
+    -->
+    <target name="-pre-compile">
+        <exec executable="mirahc" dir="src">
+            <arg value="--java" />
+            <arg line="--classpath ${sunspot.classpath}:${sunspot.bootclasspath}" />
+            <arg value="." />
+        </exec>
+    </target>
+
+</project>
